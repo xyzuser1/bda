@@ -1,0 +1,18 @@
+sudo su 
+hbase shell 
+create 'my_table', 'my_column_family' 
+
+put 'my_table', 'row1', 'my_column_family:name', 'Alice' 
+put 'my_table', 'row1', 'my_column_family:age', '30' 
+put 'my_table', 'row2', 'my_column_family:name', 'Bob' 
+put 'my_table', 'row2', 'my_column_family:age', '25'
+
+get 'my_table', 'row1' 
+scan 'my_table' 
+
+put 'my_table', 'row1', 'my_column_family:age', '31'
+
+delete 'my_table', 'row1', 'my_column_family:age'
+deleteall 'my_table', 'row1'
+
+drop 'my_table' 
