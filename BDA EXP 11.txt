@@ -1,0 +1,35 @@
+11) Aggregate functions
+
+>>sudo su
+>>sudo apt install openjdk-8-jdk -y
+>>sudo update-alternatives --config java
+	>>select the java 8 version using selection number 2(specified number of java 8)
+>>nano ~/.bashrc
+	export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64  >>paste this
+ctrl+s ,ctrl+x
+>>source ~/.bashrc
+>>hdfs dfs -mkdir hivedir(dir name)
+>>nano emp.csv
+	Id, Name, Salary, Age, Gender
+	1,John Doe,55000.0,30,M
+	2,Jane Smith,62000.5,28,F
+	3,Alan Brown,45000.75,35,M
+	4,Mary Johnson,72000.0,40,F
+	5,Chris Lee,50000.0,27,M
+>>hdfs dfs -put emp.csv /hivedir
+hive (run this)
+(paste this)
+   CREATE EXTERNAL TABLE employee ( 
+   Id INT, 
+   Name STRING, 
+   Salary FLOAT, 
+   Age INT, 
+   Gender STRING 
+) 
+ROW FORMAT DELIMITED 
+FIELDS TERMINATED BY ',' 
+LOCATION '/hivedir';
+
+SELECT * FROM employee;
+>>click enter 
+
