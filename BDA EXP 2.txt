@@ -1,0 +1,31 @@
+2) Hadoop commands
+
+sudo su
+
+>>create directory 
+	hdfs dfs -mkdir /cse (dirname)
+>>list directories
+	hdfs dfs -ls /
+>>remove directory
+	hdfs dfs -rm -r /cse
+>>create file
+	nano example.txt
+	hdfs dfs -put example.txt /cse
+>>viewing file content in hdfs
+	hdfs dfs -cat example.txt
+>>delete file from dir
+	hdfs dfs -rm /cse/example.txt
+>>check diskusage of hdfs dir
+	hdfs dfs -du -h
+
+create another dir (cse1)
+>>copy contents
+	nano ex1.txt   ====> hi everyone
+	hdfs dfs -cp ex1.txt ex2.txt
+>>move contents
+	hdfs dfs -mkdir /a
+	nano file.txt   ===>hi
+	hdfs dfs -put file.txt /a
+	hdfs dfs -mkdir /b
+	hdfs dfs -mv /a/file.txt /b  *move file in a to b*
+	hdfs dfs -mv /a /b  *move dir a to b*

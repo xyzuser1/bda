@@ -1,0 +1,23 @@
+1) Installation of Hadoop
+
+>>Open Ubuntu
+	
+	sudo su
+	sudo apt update -y
+	sudo apt install openjdk-11-jdk -y
+	cd /usr/local
+	sudo wget https://downloads.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
+	sudo tar -xvzf hadoop-3.3.6.tar.gz
+	sudo mv hadoop-3.3.6 hadoop 
+	sudo nano ~/.bashrc
+	>>paste in bash
+		export HADOOP_HOME=/usr/local/hadoop 
+		export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin 
+		export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:/bin/java::") 
+		export PATH=$PATH:$JAVA_HOME/bin
+	>> ctrl+x
+	source ~/.bashrc 
+	hadoop version
+	
+if command apt shows error ,use yum instead of apt
+
