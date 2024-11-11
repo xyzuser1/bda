@@ -1,0 +1,11 @@
+sudo su
+
+DESCRIBE your_hive_database.your_hive_table; 
+sqoop export \ 
+o --connect jdbc:mysql://your-mysql-server-ip:3306/your_database \ 
+o --username your_user \ 
+o --password your_password \ 
+o --table your_table \ 
+o --export-dir /user/hive/warehouse/your_hive_table \ 
+o --m 1  
+o SELECT * FROM your_database.your_table LIMIT 10;
