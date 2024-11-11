@@ -1,0 +1,17 @@
+ sudo su 
+
+sqoop version 
+ 
+mysql -u your_user -p 
+DESCRIBE your_database.your_table; 
+sqoop import \ 
+--connect jdbc:mysql://your-mysql-server-ip:3306/your_database \ 
+--username your_user \ 
+--password your_password \ 
+--table your_table \ 
+--hive-import \ 
+--hive-table your_hive_database.your_hive_table \ 
+--m 1 
+hive 
+DESCRIBE your_hive_database.your_hive_table; 
+SELECT * FROM your_hive_database.your_hive_table LIMIT 10; 
