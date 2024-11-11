@@ -1,0 +1,26 @@
+sudo su 
+hive 
+
+CREATE TABLE employees ( 
+   
+id INT, 
+name STRING, 
+age INT, 
+department STRING 
+ ) ROW FORMAT DELIMITED 
+ FIELDS TERMINATED BY ',' 
+ STORED AS TEXTFILE; 
+
+LOAD DATA LOCAL INPATH '/path/to/your/employees.csv' INTO TABLE 
+employees; 
+CREATE VIEW sales_employees AS 
+SELECT id, name, age 
+FROM employees 
+WHERE department = 'Sales'; 
+SELECT * FROM sales_employees; 
+DROP VIEW sales_employees; 
+CREATE VIEW sales_employees AS 
+SELECT id, name, age, department 
+FROM employees 
+WHERE department = 'Sales'; 
+DROP VIEW sales_employees;
