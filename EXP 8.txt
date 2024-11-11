@@ -1,0 +1,24 @@
+sudo su 
+
+hive 
+
+CREATE TABLE employees ( 
+    
+id INT, 
+name STRING, 
+age INT, 
+department STRING 
+ ) ROW FORMAT DELIMITED 
+ FIELDS TERMINATED BY ',' 
+ STORED AS TEXTFILE; 
+LOAD DATA LOCAL INPATH '/path/to/your/employees.csv' INTO TABLE 
+employees; 
+CREATE INDEX idx_department 
+ON TABLE employees (department) 
+AS 'org.apache.hadoop.hive.ql.index.compact.CompactIndexHandler' 
+WITH DEFERRED REBUILD; 
+ 
+ALTER INDEX idx_department ON employees REBUILD; 
+
+SELECT * FROM employees WHERE department = 'Sales'; 
+DROP INDEX idx_department ON employees; 
