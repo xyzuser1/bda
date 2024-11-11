@@ -1,0 +1,31 @@
+CREATE EXTERNAL TABLE 
+student_external ( 
+name 
+string, 
+class 
+ARRAY, 
+gender_age STRUCT, 
+subj_score MAP 
+) 
+COMMENT ' External student 
+table' ROW FORMAT 
+DELIMITED FIELDS 
+TERMINATED BY '|' 
+COLLECTION ITEMS TERMINATED BY 
+',' MAP KEYS TERMINATED BY ':' 
+STORED AS TEXTFILE; 
+LOCATION '/user/tables/students'; 
+
+LOAD DATA LOCAL INPATH 
+'/home/Hadoop/student.txt' OVERWRITE INTO 
+TABLE student_external 
+sudo nano countries.csv 
+hdfs dfs -mkdir [hdfs-directory-name] 
+hdfs dfs -put [original-file-location] [hdfs-directory-name] 
+hdfs dfs -ls [hdfs-directory-name] 
+select * from [external-table-name];
+create table if not exists [managed-table-name]( 
+[column1-name] [column1-type], [column2-name] [var2-name], ...) 
+comment '[comment]'; 
+insert overwrite table [managed-table-name] select * from [external-table-name];
+select * from [managed-table-name]; 
