@@ -1,0 +1,27 @@
+// C++ code
+int LDRvalue;
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(13, OUTPUT);
+  //Enable serial communication for serial monitor
+  Serial.begin(9600);
+ }
+
+ void loop()
+ {
+   LDRvalue = analogRead(A0);
+   Serial.print("LDR Value is: ");
+   Serial.println (LDRvalue);
+   delay(1000);
+ 
+   //Street Light is ON
+   if(LDRvalue >= 750){
+     digitalWrite(13,HIGH);
+   }
+
+   //Light is off
+   if(LDRvalue < 750){
+   digitalWrite(13, LOW);
+   }
+  }
