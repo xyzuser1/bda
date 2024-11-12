@@ -22,3 +22,5 @@ void loop() {
     Serial.println("Client: " + esp.readStringUntil('\n'));
   }
 }
+
+https://www.tinkercad.com/things/4VFsbDnUdIo-copy-of-chat-arduino?sharecode=znTpVUWMqwRr4bI-oeTFhM6MDsE99Rf-X2iU_DdNWBk
