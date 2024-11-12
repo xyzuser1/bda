@@ -1,0 +1,24 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial esp(10, 11); // RX = 10, TX = 11
+
+void setup() {
+  Serial.begin(9600);
+  esp.begin(9600);
+  Serial.println("Chat Server Started. Type 'Client: <message>' to simulate a client response.");
+}
+
+void loop() {
+  if (Serial.available()) {
+    String msg = Serial.readStringUntil('\n');
+    if (msg.startsWith("Client:")) {
+      Serial.println("Client: " + msg.substring(7));
+    } else {
+      Serial.println("You: " + msg);
+      esp.println(msg); // Send message to ESP8266
+    }
+  }
+  if (esp.available()) {
+    Serial.println("Client: " + esp.readStringUntil('\n'));
+  }
+}
