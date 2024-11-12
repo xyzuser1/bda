@@ -1,0 +1,79 @@
+// Define pins for each signal
+int signal1Red = 13;
+int signal1Yellow = 12;
+int signal1Green = 11;
+
+int signal2Red = 10;
+int signal2Yellow = 9;
+int signal2Green = 8;
+
+int signal3Red = 7;
+int signal3Yellow = 6;
+int signal3Green = 5;
+
+void setup() {
+  // Set all signal pins as output
+  pinMode(signal1Red, OUTPUT);
+  pinMode(signal1Yellow, OUTPUT);
+  pinMode(signal1Green, OUTPUT);
+  
+  pinMode(signal2Red, OUTPUT);
+  pinMode(signal2Yellow, OUTPUT);
+  pinMode(signal2Green, OUTPUT);
+  
+  pinMode(signal3Red, OUTPUT);
+  pinMode(signal3Yellow, OUTPUT);
+  pinMode(signal3Green, OUTPUT);
+}
+
+void loop() {
+  // Signal 1 Green, Signal 2 & 3 Red
+  digitalWrite(signal1Green, HIGH);
+  digitalWrite(signal1Yellow, LOW);
+  digitalWrite(signal1Red, LOW);
+  
+  digitalWrite(signal2Green, LOW);
+  digitalWrite(signal2Yellow, LOW);
+  digitalWrite(signal2Red, HIGH);
+  
+  digitalWrite(signal3Green, LOW);
+  digitalWrite(signal3Yellow, LOW);
+  digitalWrite(signal3Red, HIGH);
+  
+  delay(5000);  // 5 seconds delay for Green light
+  
+  // Signal 1 Yellow, others remain Red
+  digitalWrite(signal1Green, LOW);
+  digitalWrite(signal1Yellow, HIGH);
+  delay(2000);  // 2 seconds delay for Yellow light
+  
+  // Signal 1 Red, Signal 2 Green
+  digitalWrite(signal1Red, HIGH);
+  digitalWrite(signal1Yellow, LOW);
+  
+  digitalWrite(signal2Green, HIGH);
+  digitalWrite(signal2Red, LOW);
+  delay(5000);  // 5 seconds delay for Signal 2 Green
+  
+  // Signal 2 Yellow, others remain Red
+  digitalWrite(signal2Green, LOW);
+  digitalWrite(signal2Yellow, HIGH);
+  delay(2000);  // 2 seconds delay for Yellow light
+  
+  // Signal 2 Red, Signal 3 Green
+  digitalWrite(signal2Red, HIGH);
+  digitalWrite(signal2Yellow, LOW);
+  
+  digitalWrite(signal3Green, HIGH);
+  digitalWrite(signal3Red, LOW);
+  delay(5000);  // 5 seconds delay for Signal 3 Green
+  
+  // Signal 3 Yellow, others remain Red
+  digitalWrite(signal3Green, LOW);
+  digitalWrite(signal3Yellow, HIGH);
+  delay(2000);  // 2 seconds delay for Yellow light
+  
+  // Signal 3 Red, loop back to Signal 1
+  digitalWrite(signal3Red, HIGH);
+  digitalWrite(signal3Yellow, LOW);
+}
