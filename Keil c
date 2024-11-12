@@ -1,0 +1,31 @@
+//ledblink
+
+#include <LPC214x.H>
+unsigned int delay;
+int main(void)
+{
+IO0DIR = (1<<20); // Configure P1.20 as Output
+while(1)
+{
+IO0CLR = (1<<20); // CLEAR (0) P1.20 to turn LED ONfor(delay=0; delay<500000; delay++); // delay
+IO0SET = (1<<20); // SET (1) P1.10 to turn LEDs OFF
+for(delay=0; delay<500000; delay++); // delay
+}
+}
+
+//led switch
+
+#include <lpc214x.h>
+int main(void)
+{
+ IO1DIR &= ~(1<<16); // explicitly making P1.16 as Input
+ IO0DIR |= (1<<16); // Configuring P0.10 as Output
+ While (1)
+ {
+ If (!(IO1PIN & (1<<16))) // Evaluates to True for a 'LOW' on P1.16 {
+ IO0CLR |= (1<<16); // drive P0.30 LOW, turn LED ON } else
+ {
+ IO0SET |= (1<<16); // drive P0.30 HIGH, turn LED OFF }
+ }
+ return 0;
+}
