@@ -1,0 +1,25 @@
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(13,OUTPUT);
+}
+
+void loop()
+{
+  if (Serial.available()){
+    
+    String payload = Serial.readStringUntil('\r\n');
+    int cmd = payload.toInt();
+    
+    Serial.println(payload);
+    
+    if (cmd == 1){
+      digitalWrite(13,HIGH);
+    }
+    if (cmd ==0){
+      digitalWrite(13, LOW);
+    }
+  }
+}
+
+https://www.tinkercad.com/things/etuDPPLuah7-arduino-to-arduino-serial-communication
