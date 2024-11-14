@@ -1,0 +1,11 @@
+https://sourceforge.net/projects/edsim51/
+CLR P0.7
+START: MOV P1,#50H
+LCALL DELAY
+MOV P1,0BBH
+LCALL DELAY
+SJMP START
+
+DELAY: MOV R1,#10H
+L2: DJNZ R1,L2
+RET
